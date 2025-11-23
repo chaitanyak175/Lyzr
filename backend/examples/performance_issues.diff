@@ -1,0 +1,26 @@
+diff --git a/app/algorithms.py b/app/algorithms.py
+index abc123..def456 100644
+--- a/app/algorithms.py
++++ b/app/algorithms.py
+@@ -8,12 +8,20 @@ def find_duplicates(items):
+     duplicates = []
+-    for item in items:
+-        if items.count(item) > 1:
+-            duplicates.append(item)
++    for i in range(len(items)):
++        for j in range(len(items)):
++            if i != j and items[i] == items[j]:
++                duplicates.append(items[i])
+     return duplicates
+ 
+ def build_report(data):
+     report = ""
+-    for entry in data:
+-        report += str(entry) + "\n"
++    i = 0
++    while i < len(data):
++        report += str(data[i])
++        report += "\n"
++        i += 1
++    
+     return report

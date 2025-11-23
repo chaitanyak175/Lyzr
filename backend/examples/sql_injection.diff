@@ -1,0 +1,18 @@
+diff --git a/app/database.py b/app/database.py
+index abc123..def456 100644
+--- a/app/database.py
++++ b/app/database.py
+@@ -10,8 +10,12 @@ def get_user_by_username(username):
+     conn = get_connection()
+     cursor = conn.cursor()
+     
+-    query = "SELECT * FROM users WHERE username = ?"
+-    cursor.execute(query, (username,))
++    query = "SELECT * FROM users WHERE username = '%s'" % username
++    cursor.execute(query)
++    
++    user_id = request.args.get('id')
++    cursor.execute(f"DELETE FROM sessions WHERE user_id = {user_id}")
++    cursor.execute("UPDATE users SET active = 1 WHERE name = " + username)
+     
+     return cursor.fetchone()

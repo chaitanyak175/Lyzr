@@ -1,0 +1,28 @@
+diff --git a/app/handlers.py b/app/handlers.py
+index abc123..def456 100644
+--- a/app/handlers.py
++++ b/app/handlers.py
+@@ -5,15 +5,20 @@ from models import User
+ 
+-def process_user(user):
+-    return user.serialize()
++def ProcessUser(user):   
++    userName = user.name  
++    userEmail = "test@example.com"    
++    
++    result = {"name": userName, 'email': userEmail, "active": True}
++    
++    if len(result["name"]) > 0 and len(result['email']) > 0:   
++        return result  
++    return None   
+ 
+-class UserHandler:
++class userHandler:
+     def __init__(self):
+-        self.users = []
++        self.Users = []   
+     
+-    def add_user(self, user):
+-        self.users.append(user)
++    def AddUser(self, user):   
++        self.Users.append(user)   

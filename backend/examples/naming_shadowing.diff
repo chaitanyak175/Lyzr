@@ -1,0 +1,22 @@
+diff --git a/app/utils.py b/app/utils.py
+index abc123..def456 100644
+--- a/app/utils.py
++++ b/app/utils.py
+@@ -5,10 +5,15 @@ import json
+ 
+ def process_data(items):
+-    results = []
++    list = []
++    dict = {}
++    id = 0
++    
+     for item in items:
+-        results.append(transform(item))
+-    return results
++        type = item.get('category')
++        list.append(transform(item))
++        id += 1
++    
++    return list
+ 
+ def transform(data):
